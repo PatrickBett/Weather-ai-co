@@ -29,7 +29,7 @@ export const getCoordinates = async (city) => {
 export const getWeatherAI = async ({ lat, lon }) => {
   try {
     const res = await axios.get(
-      "/api/weather",
+      "/api/v1/weather",
       {
         params: {
           lat,
