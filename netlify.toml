@@ -3,3 +3,4 @@
   to = "https://api.weather-ai.co/:splat"
   status = 200
   force = true
+  
