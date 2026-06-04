@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCoordinates, getWeatherAI } from "../services/weatherApi";
+import { getCoordinates, getWeatherAI, getAccountUsage } from "../services/weatherApi";
+
 
 export const useWeather = (city) => {
   return useQuery({
@@ -13,5 +14,12 @@ export const useWeather = (city) => {
 
     enabled: !!city,
     staleTime: 1000 * 60 * 5,
+  });
+};
+
+export const useAccountUsage = () => {
+  return useQuery({
+    queryKey: ["account-usage"],
+    queryFn: getAccountUsage,
   });
 };

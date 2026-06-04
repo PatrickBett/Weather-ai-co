@@ -51,3 +51,16 @@ export const getWeatherAI = async ({ lat, lon }) => {
     throw error;
   }
 };
+// Get Account Usage
+export const getAccountUsage = async () => {
+  const res = await axios.get(
+    "/api/v1/usage",
+    {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    }
+  );
+
+  return res.data;
+};

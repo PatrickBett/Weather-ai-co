@@ -43,6 +43,11 @@ export default function Navbar({ onSearch }) {
               7-Day
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link text-white" to="/account">
+              Account Usage
+            </NavLink>
+          </li>
         </ul>
 
         {/* Search bar (right side on desktop, stacked on mobile) */}

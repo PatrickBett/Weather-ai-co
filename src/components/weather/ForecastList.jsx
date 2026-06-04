@@ -1,62 +1,90 @@
 export default function ForecastList({ data }) {
   if (!Array.isArray(data)) return null;
 
+  const containerStyle = {
+    color: "white",
+  };
+
+  const cardStyle = {
+    background: "rgba(255,255,255,0.08)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "14px",
+    border: "1px solid rgba(255,255,255,0.2)",
+    minWidth: 220,
+    padding: "16px",
+    textAlign: "center",
+  };
+
   return (
-    <div className="mt-4">
-      <h3>7-Day Forecast</h3>
+    <div className="mt-4" style={containerStyle}>
+      {/* HEADER */}
+      <h4 className="fw-bold mb-3 text-center">7-Day Forecast</h4>
 
-      <div className="d-flex gap-3 overflow-auto">
+      {/* SCROLL ROW */}
+      <div className="d-flex gap-3 overflow-auto pb-2">
         {data.map((item, i) => (
-          <div
-            key={i}
-            className="border rounded p-3 text-center shadow-sm"
-            style={{ minWidth: 220 }}
-          >
-            {/* Date */}
-            <p className="fw-bold mb-1">{new Date(item.date).toDateString()}</p>
+          <div key={i} style={cardStyle} className="shadow-sm">
+            {/* DATE */}
+            <p className="fw-bold mb-2">{new Date(item.date).toDateString()}</p>
 
-            {/* Icon */}
-            <img src={item.icon} alt="weather icon" width={55} height={55} />
+            {/* ICON */}
+            <img
+              src={item.icon}
+              alt="weather icon"
+              width={60}
+              height={60}
+              className="mb-2"
+            />
 
-            {/* Temperature */}
-            <h5 className="mb-1">
+            {/* TEMPERATURE */}
+            <h5 className="fw-bold mb-1">
               {Math.round(item.temp_max)}° / {Math.round(item.temp_min)}°
             </h5>
 
-            {/* Condition */}
-            <small className="d-block text-muted mb-2">
-              Condition code: {item.condition_code}
-            </small>
+            {/* CONDITION */}
+            <p className="text-light mb-2" style={{ opacity: 0.8 }}>
+              Condition {item.condition_code}
+            </p>
 
-            {/* Precipitation probability */}
-            <small className="d-block">
-              🌧 Chance of rain: {item.precipitation_probability}%
-            </small>
+            {/* GRID DETAILS */}
+            <div className="row text-start">
+              <div className="col-6 mb-1">
+                <small>🌧 Rain</small>
+                <div className="fw-semibold">
+                  {item.precipitation_probability}%
+                </div>
+              </div>
 
-            {/* Precipitation amount */}
-            <small className="d-block">
-              💧 Rainfall: {item.precipitation_sum} mm
-            </small>
+              <div className="col-6 mb-1">
+                <small>💧 Rainfall</small>
+                <div className="fw-semibold">{item.precipitation_sum} mm</div>
+              </div>
 
-            {/* Wind */}
-            <small className="d-block">💨 Max wind: {item.wind_max} m/s</small>
+              <div className="col-6 mb-1">
+                <small>💨 Wind</small>
+                <div className="fw-semibold">{item.wind_max} m/s</div>
+              </div>
 
-            {/* Sunrise / Sunset */}
-            <small className="d-block">
-              🌅 Sunrise:{" "}
-              {new Date(item.sunrise).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </small>
+              <div className="col-6 mb-1">
+                <small>📅 Sunrise</small>
+                <div className="fw-semibold">
+                  {new Date(item.sunrise).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </div>
+              </div>
 
-            <small className="d-block">
-              🌇 Sunset:{" "}
-              {new Date(item.sunset).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </small>
+              <div className="col-12 mt-2">
+                <small>🌇 Sunset</small>
+                <div className="fw-semibold">
+                  {new Date(item.sunset).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

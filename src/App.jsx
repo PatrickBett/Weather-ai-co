@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import CurrentPage from "./pages/CurrentPage";
 import HourlyPage from "./pages/HourlyPage";
 import ForecastPage from "./pages/ForecastPage";
+import AccountPage from "./pages/AccountPage";
 import "./App.css";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<CurrentPage city={city} />} />
         <Route path="/hourly" element={<HourlyPage city={city} />} />
         <Route path="/forecast" element={<ForecastPage city={city} />} />
+        <Route path="/account" element={<AccountPage />} />
       </Routes>
     </>
   );

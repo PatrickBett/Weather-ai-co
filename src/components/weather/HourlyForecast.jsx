@@ -1,51 +1,77 @@
 export default function HourlyForecast({ data }) {
   if (!Array.isArray(data)) return null;
 
+  const containerStyle = {
+    color: "white",
+  };
+
+  const cardStyle = {
+    background: "rgba(255,255,255,0.08)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "14px",
+    border: "1px solid rgba(255,255,255,0.2)",
+    minWidth: 220,
+    padding: "16px",
+    textAlign: "center",
+  };
+
   return (
-    <div className="mt-4">
-      <h3>Hourly Forecast</h3>
+    <div className="mt-4" style={containerStyle}>
+      {/* HEADER */}
+      <h4 className="fw-bold mb-3 text-center">Hourly Forecast</h4>
 
-      <div className="d-flex gap-3 overflow-auto">
+      {/* SCROLL ROW */}
+      <div className="d-flex gap-3 overflow-auto pb-2">
         {data.slice(0, 24).map((item, i) => (
-          <div
-            key={i}
-            className="border rounded p-3 text-center shadow-sm"
-            style={{ minWidth: 220 }}
-          >
-            {/* Time */}
-            <p className="fw-bold mb-1">{new Date(item.time).getHours()}:00</p>
+          <div key={i} style={cardStyle} className="shadow-sm">
+            {/* TIME */}
+            <p className="fw-bold mb-2">{new Date(item.time).getHours()}:00</p>
 
-            {/* Icon */}
-            <img src={item.icon} alt="weather icon" width={50} height={50} />
+            {/* ICON */}
+            <img
+              src={item.icon}
+              alt="weather icon"
+              width={55}
+              height={55}
+              className="mb-2"
+            />
 
-            {/* Temperature */}
-            <h5 className="mb-1">{Math.round(item.temperature)}°C</h5>
+            {/* TEMP */}
+            <h5 className="fw-bold mb-1">{Math.round(item.temperature)}°C</h5>
 
-            {/* Feels like */}
-            <p className="mb-1 text-muted">
-              Feels like {Math.round(item.feels_like)}°C
+            <p className="text-light mb-2" style={{ opacity: 0.8 }}>
+              Feels {Math.round(item.feels_like)}°C
             </p>
 
-            {/* Condition */}
-            <small className="d-block text-muted mb-2">
-              Condition code: {item.condition_code}
-            </small>
+            {/* GRID DETAILS */}
+            <div className="row text-start">
+              <div className="col-6 mb-1">
+                <small>🌧 Rain</small>
+                <div className="fw-semibold">
+                  {item.precipitation_probability}%
+                </div>
+              </div>
 
-            {/* Precipitation */}
-            <small className="d-block">
-              🌧 {item.precipitation_probability}% rain
-            </small>
+              <div className="col-6 mb-1">
+                <small>💧 Humidity</small>
+                <div className="fw-semibold">{item.humidity}%</div>
+              </div>
 
-            {/* Wind */}
-            <small className="d-block">
-              💨 {item.wind_speed} m/s (gust {item.wind_gust})
-            </small>
+              <div className="col-6 mb-1">
+                <small>💨 Wind</small>
+                <div className="fw-semibold">{item.wind_speed}</div>
+              </div>
 
-            {/* Humidity */}
-            <small className="d-block">💧 {item.humidity}% humidity</small>
+              <div className="col-6 mb-1">
+                <small>🌪 Gust</small>
+                <div className="fw-semibold">{item.wind_gust}</div>
+              </div>
 
-            {/* UV Index */}
-            <small className="d-block">☀️ UV index: {item.uv_index}</small>
+              <div className="col-12 mt-2">
+                <small>☀️ UV Index</small>
+                <div className="fw-semibold">{item.uv_index}</div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
