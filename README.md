@@ -105,6 +105,29 @@ src/
 └── index.css
 ```
 
+## Installation
+
+### Clone the repository
+
+git clone <repository-url>
+cd frontend
+
+### Install dependencies
+
+npm install
+
+### Create environment variables
+
+Create a .env file in the project root:
+VITE_WEATHER_AI_API_KEY=your_api_key_here
+
+### Running Locally
+
+npm run dev
+
+Application runs at:
+http://localhost:5173
+
 ## Challenges and Solutions
 
 ### 1. API Integration
