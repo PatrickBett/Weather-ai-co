@@ -78,13 +78,16 @@ A modern weather application built with React, Vite, Bootstrap, React Router, an
 src/
 │
 ├── api/
-│   └── weather.js
+│   └── weatherApi.js
 │
 ├── components/
 │   ├── common/
-│   │   ├── Navbar.jsx
-│   │   └── SearchBar.jsx
+│   │   ├SearchBar.jsx
 │   │
+│   │── layout/
+    │   └──Navbar.jsx
+    │
+    │
 │   └── weather/
 │       ├── CurrentWeatherCard.jsx
 │       ├── ForecastList.jsx
@@ -92,7 +95,8 @@ src/
 │
 ├── hooks/
 │   ├── useWeather.js
-│
+│── services/
+│   ├weatherApi.js
 │
 ├── pages/
 │   ├── CurrentPage.jsx
