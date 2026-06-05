@@ -136,7 +136,7 @@ http://localhost:5173
 During deployment, the application encountered Cross-Origin Resource Sharing (CORS) issues when attempting to make direct requests from the React frontend to the WeatherAI API. While the application worked correctly in development, requests were blocked in production because the API did not allow requests from the deployed frontend domain.
 
 **Solution:**
-To address this issue, a Netlify redirect configuration was implemented using a netlify.toml file. The redirect acts as a proxy between the frontend and the WeatherAI API, allowing requests to be routed through Netlify instead of calling the external API directly from the browser. This approach resolved the CORS restrictions while maintaining a clean API integration..
+To address this issue, a Netlify redirect configuration was implemented using a netlify.toml file(reverse proxy). The redirect acts as a proxy between the frontend and the WeatherAI API, allowing requests to be routed through Netlify instead of calling the external API directly from the browser. This approach resolved the CORS restrictions while maintaining a clean API integration..
 
 ---
 
