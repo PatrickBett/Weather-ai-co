@@ -50,7 +50,7 @@ export default function Navbar({ onSearch }) {
           </li>
         </ul>
 
-        {/* Search bar (right side on desktop, stacked on mobile) */}
+        {/* Search bar  */}
         <div className="d-flex">
           <SearchBar onSearch={onSearch} />
         </div>
