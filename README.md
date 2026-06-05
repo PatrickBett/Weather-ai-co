@@ -1,5 +1,7 @@
 # WeatherAI Dashboard
 
+Live Demo: https://weatheraico.netlify.app/
+
 A modern weather application built with React, Vite, Bootstrap, React Router, and TanStack Query. The application provides current weather conditions, hourly forecasts, 7-day forecasts, and account usage information from the WeatherAI API.
 
 ## Features
